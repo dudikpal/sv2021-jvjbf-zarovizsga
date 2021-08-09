@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.training360.finalexam.players.Player;
+import org.training360.finalexam.players.PlayerDTO;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,5 +27,11 @@ public class Team {
 
     public Team(String name) {
         this.name = name;
+    }
+
+
+    public void addPlayer(Player player) {
+        players.add(player);
+        player.setTeam(this);
     }
 }

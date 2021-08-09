@@ -18,11 +18,13 @@ public class PlayerService {
 
     private PlayerRepository playerRepository;
 
+
     public List<PlayerDTO> listAllPlayers() {
         return playerRepository.findAll().stream()
                 .map(p -> modelMapper.map(p, PlayerDTO.class))
                 .collect(Collectors.toList());
     }
+
 
     public PlayerDTO findPlayerById(Long id) {
         return modelMapper.map(playerRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("cannot find player")),
@@ -35,6 +37,7 @@ public class PlayerService {
         playerRepository.save(player);
         return modelMapper.map(player, PlayerDTO.class);
     }
+
 
     public void deletePlayer(long id) {
         playerRepository.deleteById(id);
